@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useStore } from "@/context/StoreContext";
+import { SubscribeForm } from "./SubscribeForm";
 
 export function Footer() {
   const { categories } = useStore();
@@ -29,8 +30,12 @@ export function Footer() {
           </div>
         </div>
         <div>
-          <p className="text-xs uppercase tracking-[0.2em] text-muted">Reach out</p>
-          <div className="mt-4 flex flex-col gap-2 text-sm">
+          <p className="text-xs uppercase tracking-[0.2em] text-muted">Offers & discounts</p>
+          <p className="mt-3 text-sm text-muted">
+            Subscribe with your email. We will tell you if you are already on the list, and send a confirmation.
+          </p>
+          <SubscribeForm compact />
+          <div className="mt-6 flex flex-col gap-2 text-sm">
             <a href="mailto:sitndip@gmail.com">sitndip@gmail.com</a>
             <a href="tel:+96170888898">+961 70 888 898</a>
             <a href="https://wa.me/96170888898" target="_blank" rel="noreferrer">

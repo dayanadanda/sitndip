@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { isAdmin } from "@/lib/auth";
-import { getMessages, getOrders, getProducts } from "@/lib/db";
+import { getMessages, getOrders, getProducts, getSubscribers } from "@/lib/db";
 import { money } from "@/lib/format";
 
 export const dynamic = "force-dynamic";
@@ -12,16 +12,18 @@ export default async function AdminDashboard() {
   const products = getProducts();
   const orders = getOrders();
   const messages = getMessages();
+  const subscribers = getSubscribers();
   const revenue = orders.reduce((sum, order) => sum + order.total, 0);
 
   return (
     <div>
       <h1 className="text-2xl font-semibold">Dashboard</h1>
-      <div className="mt-6 grid gap-4 md:grid-cols-4">
+      <div className="mt-6 grid gap-4 md:grid-cols-5">
         {[
           { label: "Products", value: products.length, href: "/admin/products" },
           { label: "Orders", value: orders.length, href: "/admin/orders" },
           { label: "Messages", value: messages.length, href: "/admin/messages" },
+          { label: "Subscribers", value: subscribers.length, href: "/admin/subscribers" },
           { label: "Revenue", value: money(revenue), href: "/admin/orders" },
         ].map((card) => (
           <Link key={card.label} href={card.href} className="bg-white p-5 shadow-sm">

@@ -59,7 +59,48 @@ export type Customer = {
   name: string;
   email: string;
   phone: string;
+  address: string;
+  city: string;
+  buildingNumber: string;
 };
+
+export type PaymentMethod = "cod" | "visa" | "whish";
+
+export const PAYMENT_OPTIONS: {
+  id: PaymentMethod;
+  label: string;
+  description: string;
+}[] = [
+  {
+    id: "cod",
+    label: "Cash on Delivery (COD)",
+    description:
+      "Pay in cash when your SitnDip order arrives at your door. No online payment is needed.",
+  },
+  {
+    id: "visa",
+    label: "Visa",
+    description:
+      "Pay by Visa card. After you place the order we will contact you to complete the card payment.",
+  },
+  {
+    id: "whish",
+    label: "Whish Money",
+    description:
+      "Pay through the Whish Money app. After you place the order we will send you the Whish number to transfer to.",
+  },
+];
+
+export type Subscriber = {
+  id: string;
+  email: string;
+  name: string;
+  createdAt: string;
+};
+
+export function paymentLabel(method?: PaymentMethod) {
+  return PAYMENT_OPTIONS.find((option) => option.id === method)?.label ?? "Payment pending";
+}
 
 export type Order = {
   id: string;
@@ -71,8 +112,10 @@ export type Order = {
     phone: string;
     address: string;
     city: string;
+    buildingNumber?: string;
     notes?: string;
   };
+  paymentMethod: PaymentMethod;
   total: number;
   createdAt: string;
 };

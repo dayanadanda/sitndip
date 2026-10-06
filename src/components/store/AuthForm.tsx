@@ -2,6 +2,7 @@
 
 import { FormEvent, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import Link from "next/link";
 
 const input = "w-full border border-line px-4 py-3";
 
@@ -31,6 +32,13 @@ export function AuthForm() {
       setError(data.error ?? "Something went wrong.");
       return;
     }
+    if (mode === "register" && form.get("offers") === "on") {
+      await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: form.get("email"), name: form.get("name") }),
+      });
+    }
     router.push(next);
     router.refresh();
   }
@@ -48,7 +56,7 @@ export function AuthForm() {
         {mode === "register" && (
           <>
             <input name="name" required placeholder="Full name" className={input} />
-            <input name="phone" placeholder="Phone" className={input} />
+            <input name="phone" type="tel" required placeholder="Phone number" className={input} />
           </>
         )}
         <input name="email" type="email" required placeholder="Email" className={input} />
@@ -60,6 +68,12 @@ export function AuthForm() {
           placeholder="Password"
           className={input}
         />
+        {mode === "register" && (
+          <label className="flex items-start gap-2 text-sm text-muted">
+            <input name="offers" type="checkbox" defaultChecked className="mt-1" />
+            Email me SitnDip offers and discounts
+          </label>
+        )}
         {error && <p className="text-sm text-red-700">{error}</p>}
         <button
           type="submit"
@@ -70,13 +84,19 @@ export function AuthForm() {
         </button>
       </form>
 
+      {mode === "login" && (
+        <Link href="/account/forgot" className="mt-4 inline-block text-sm underline">
+          Forgot password?
+        </Link>
+      )}
+
       <button
         type="button"
         onClick={() => {
           setMode(mode === "login" ? "register" : "login");
           setError("");
         }}
-        className="mt-6 text-sm underline"
+        className="mt-6 block text-sm underline"
       >
         {mode === "login" ? "New here? Create an account" : "Already have an account? Log in"}
       </button>

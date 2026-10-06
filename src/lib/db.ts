@@ -86,6 +86,9 @@ export type StoredUser = {
   name: string;
   email: string;
   phone: string;
+  address: string;
+  city: string;
+  buildingNumber: string;
   passwordHash: string;
   createdAt: string;
 };
@@ -110,6 +113,35 @@ export function getSessions(): StoredSession[] {
 
 export function saveSessions(sessions: StoredSession[]) {
   writeJson("sessions.json", sessions);
+}
+
+export type StoredReset = {
+  tokenHash: string;
+  userId: string;
+  expiresAt: number;
+};
+
+export function getResets(): StoredReset[] {
+  return readJson<StoredReset[]>("resets.json", []);
+}
+
+export function saveResets(resets: StoredReset[]) {
+  writeJson("resets.json", resets);
+}
+
+export type StoredSubscriber = {
+  id: string;
+  email: string;
+  name: string;
+  createdAt: string;
+};
+
+export function getSubscribers(): StoredSubscriber[] {
+  return readJson<StoredSubscriber[]>("subscribers.json", []);
+}
+
+export function saveSubscribers(subscribers: StoredSubscriber[]) {
+  writeJson("subscribers.json", subscribers);
 }
 
 export function slugify(value: string) {

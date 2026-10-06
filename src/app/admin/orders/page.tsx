@@ -2,6 +2,7 @@ import { redirect } from "next/navigation";
 import { isAdmin } from "@/lib/auth";
 import { getOrders } from "@/lib/db";
 import { money } from "@/lib/format";
+import { paymentLabel } from "@/lib/types";
 
 export const dynamic = "force-dynamic";
 
@@ -23,9 +24,13 @@ export default async function AdminOrdersPage() {
                 <span>{money(order.total)}</span>
               </div>
               <p className="mt-1 text-sm text-[#646970]">
-                {order.customer.name} · {order.customer.email} · {order.customer.city}
+                {order.customer.name} · {order.customer.phone} · {order.customer.city}
               </p>
-              <p className="text-sm text-[#646970]">{order.customer.address}</p>
+              <p className="text-sm text-[#646970]">
+                {order.customer.address}
+                {order.customer.buildingNumber ? `, ${order.customer.buildingNumber}` : ""}
+              </p>
+              <p className="mt-1 text-sm font-medium">{paymentLabel(order.paymentMethod)}</p>
               <ul className="mt-3 text-sm">
                 {order.items.map((item) => (
                   <li key={item.productId}>

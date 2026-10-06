@@ -43,3 +43,10 @@ next-env.d.ts
 # local database
 /data/*.db
 /data/*.db-*
+
+# customer accounts, sessions, and mailing list (created at runtime)
+/data/users.json
+/data/sessions.json
+/data/resets.json
+/data/subscribers.json
+
