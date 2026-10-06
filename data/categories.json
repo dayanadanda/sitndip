@@ -1,0 +1,26 @@
+[
+  {
+    "id": "c1",
+    "slug": "jars",
+    "name": "500g Cups",
+    "tagline": "½ KG sitndip cups — 12 per box",
+    "image": "/images/hazelnut-tub.png",
+    "kind": "regular"
+  },
+  {
+    "id": "c2",
+    "slug": "wholesale",
+    "name": "6kg Wholesale",
+    "tagline": "Bulk tubs for shops and kitchens",
+    "image": "/images/pistachio-tub.png",
+    "kind": "regular"
+  },
+  {
+    "id": "c3",
+    "slug": "bestsellers",
+    "name": "Our Best Sellers",
+    "tagline": "The cups everyone comes back for",
+    "image": "/images/lotus-tub.png",
+    "kind": "bestsellers"
+  }
+]

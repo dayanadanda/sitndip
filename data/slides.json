@@ -1,0 +1,18 @@
+[
+  {
+    "id": "s1",
+    "image": "/images/hero-sweet.jpg",
+    "eyebrow": "ISO certified · Made in Lebanon",
+    "title": "Sit down. Dip in.",
+    "buttonText": "Shop cups",
+    "buttonHref": "/shop"
+  },
+  {
+    "id": "s2",
+    "image": "/images/hero-sit.jpg",
+    "eyebrow": "Hazelnut, pistachio, Lotus, and more",
+    "title": "SitnDip chocolate cups",
+    "buttonText": "Shop cups",
+    "buttonHref": "/shop"
+  }
+]

@@ -1,0 +1,23 @@
+[
+  {
+    "id": "ORD-MUACFXA91FTB1",
+    "items": [
+      {
+        "productId": "p3",
+        "name": "Chocolate Hazelnut SitnDip",
+        "price": 9.5,
+        "qty": 1
+      }
+    ],
+    "customer": {
+      "name": "Maya Haddad",
+      "email": "maya@example.com",
+      "phone": "70123456",
+      "address": "12 Bliss Street",
+      "city": "Beirut",
+      "notes": ""
+    },
+    "total": 9.5,
+    "createdAt": "2026-09-20T21:44:00.321Z"
+  }
+]
