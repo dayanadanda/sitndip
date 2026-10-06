@@ -1,7 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  serverExternalPackages: ["better-sqlite3"],
+  // Hostinger also forces standalone. Keep a config object (not a function)
+  // so their wrapper can merge this file.
+  output: "standalone",
 };
 
 export default nextConfig;
